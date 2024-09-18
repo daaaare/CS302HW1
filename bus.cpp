@@ -2,14 +2,14 @@
 #include <iostream>
 //i thought of the logic of this function i did not know we could look up a sorting algorithm i thought googling one was cheating :(
 void Bus::load(People people){
-    int i; //had to define i outside of the for loop or the insertion part wouldn't define i
-    for(i = 0; i < pvec.size(); i++){
-        if(pvec[i].getHeight() >= people.getHeight()){  //checks the height of the person we are inserting if that height is greater than the first item in the vector than the loop continues 
-            break;                                      
+    int i;                                              //had to define i outside of the for loop or the insertion part wouldn't define i
+    for(i = 0; i < pvec.size(); i++){                  //loop goes from 0 to whatever the size of the vector is
+        if(pvec[i].getHeight() >= people.getHeight()){ //checks the height of each person on the bus (in the vector) until we find a person whose height is greater than or equal to the height of the person we are inserting
+            break;                                     //once we find this person the loop then breaks and i stops at that position (lets say the 3rd person in the loop is 64in tall and we are inserting someone 62in tall the loop stops at 3 which then makes i = 3)
         }
-    }   //if the new person is taller or the same height as the same person the loop breaks and they are then seated at the front of bus and is TELEPORTED i amount of times in front of the person that he is a little bit shorter than
-    pvec.insert(pvec.begin() + i, people);
-}
+    }  
+    pvec.insert(pvec.begin() + i, people);             //the person we are then inserting is seated at the front of the bus and then TELEPORTED i amount of times subsiquently seating them in front of the person who is taller than them 
+}                                                      //in the 64in 62in example the 64in tall person would ten become the 4th person on the bus and the 62in tall person on the bus the 3rd person on the bus
 
 void Bus::unload(){
     if(!pvec.empty()){
